@@ -1,0 +1,37 @@
+pages = [1, 2, 3, 4, 5, 1, 2, 3, 1]
+frame_size = 3
+
+frames = []
+
+page_fault = 0
+page_hit = 0
+
+for page in pages:
+
+    if page in frames:
+        page_hit += 1
+        print(page, "Hit  ", frames)
+
+    else:
+
+        page_fault +=1
+
+        if len(frames) < frame_size :
+
+            frames.append(page)
+
+        else:
+            frames.pop(0)
+            frames.append(page)
+
+        print(page, "Fault ", frames)
+
+
+print("Total Page Hit= ", page_hit)
+print("Total Page Fault= ", page_fault)
+
+hit_ratio = page_hit /len(pages)
+fault_ratio = page_fault /len(pages)
+
+print("Hit Ratio= ", hit_ratio)
+print("Fault Ratio= ", fault_ratio)
